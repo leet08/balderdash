@@ -8,14 +8,14 @@ from passlib.hash import sha256_crypt
 from sqlalchemy import func, and_, or_, not_
 import random
 import numpy as np
-#from flask_heroku import Heroku
+from flask_heroku import Heroku
 
 load_dotenv('.env')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/balderdash'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/balderdash'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#heroku = Heroku(app)
+heroku = Heroku(app)
 app.secret_key = environ.get('SECRET_KEY')
 Db.init_app(app)
 
