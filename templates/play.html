@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="{{ url_for('static', filename='./css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+    {% if session_username is defined %}
+
+        <h1>Hi {{ session_username }}!</h1>
+
+    {% else %}
+
+        <h1>Hi guest!</h1>
+
+    {% endif %}
+
+    <div>
+        You are in Game #{{game.gid}}.
+        
+    </div>
+
+        
+    <h1>Writing Round</h1>
+
+    <div>
+        Please write endings to the following proverbs. Do not capitalize the first word of your sentence and remember to add punctuation!
+    </div>
+
+    <form method="POST" action="/play" >
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            1. {{ game.question1 }}...<br>
+            {{ form.response1.label }}<br>
+            {{ form.response1(size=84) }}<br>
+            {% for error in form.response1.errors %}
+                <span class="form-error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            2. {{ game.question2 }}...<br>
+            {{ form.response2.label }}<br>
+            {{ form.response2(size=84) }}<br>
+            {% for error in form.response2.errors %}
+                <span class="form-error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            3. {{ game.question3 }}...<br>
+            {{ form.response3.label }}<br>
+            {{ form.response3(size=84) }}<br>
+            {% for error in form.response3.errors %}
+                <span class="form-error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+
+        {{ form.submit(class="form-submit") }}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+    </form>
+
+
+
+{% endblock %}

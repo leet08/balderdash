@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="{{ url_for('static', filename='./css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+    {% if session_username is defined %}
+
+        <h1>Hi {{ session_username }}!</h1>
+
+    {% else %}
+
+        <h1>Hi guest!</h1>
+
+    {% endif %}
+
+    <div>
+        You are in Game #{{game.gid}}. Here are your results:
+        
+    </div>
+    <h1> 1: {{question1}}... </h1>
+    <div id="results">
+        {% for q in q1 %}
+          {% if q != 'empty: blank' %}
+            <p> {{ q }}</p>
+          {% endif %}
+        {% endfor %}
+    </div>
+
+    <div>
+      <br>
+      You voted for: {{yourVote1}}<br>
+      {% if myVotes1 > 0 %}
+        These {{myVotes1}} people voted for you: 
+        {% for v in myVotesArray1 %}
+          <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+        {% endfor %}
+      {% else %}
+        Nobody voted for you.<br>
+      {% endif %}
+      You earned {{myPoints1}} points this round!<br><br>
+
+    </div>
+
+    <h1> 2: {{question2}}... </h1>
+    <div id="results">
+        {% for q in q2 %}
+          {% if q != 'empty: blank' %}
+            <p> {{ q }}</p>
+          {% endif %}
+        {% endfor %}
+    </div>
+
+    <div>
+      <br>
+      You voted for: {{yourVote2}}<br>
+      {% if myVotes2 > 0 %}
+        These {{myVotes2}} people voted for you: 
+        {% for v in myVotesArray2 %}
+          <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+        {% endfor %}
+      {% else %}
+        Nobody voted for you.<br>
+      {% endif %}
+      You earned {{myPoints2}} points this round!<br><br>
+
+    </div>
+
+    <h1> 3: {{question3}}... </h1>
+    <div id="results">
+        {% for q in q3 %}
+          {% if q != 'empty: blank' %}
+            <p> {{ q }}</p>
+          {% endif %}
+        {% endfor %}
+    </div>
+
+    <div>
+      <br>
+      You voted for: {{yourVote3}}<br>
+      {% if myVotes3 > 0 %}
+        These {{myVotes3}} people voted for you: 
+        {% for v in myVotesArray3 %}
+           <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+        {% endfor %}
+      {% else %}
+        Nobody voted for you.<br>
+      {% endif %}
+      You earned {{myPoints3}} points this round!<br><br>
+
+    </div>
+
+    <div style="font-size:22px">
+      Please wait for your moderator to tell you when to continue. Then click here to go to final results: <a href="/results2">results</a><br><br>
+    </div>
+        
+
+
+{% endblock %}

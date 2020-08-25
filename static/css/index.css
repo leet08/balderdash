@@ -3,46 +3,71 @@
     border: 0;
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
 
 }
 
 body {
-    background-image: url(https://image.freepik.com/free-vector/landscape-mountains-background_23-2148267130.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    
 }
 
+div {
+    margin: 20px 20px;
+    font-family: palatino;
+    font-size: 16px;
+    padding: 0 0 3px 0;
+
+}
+h3 {
+
+    font-size: 18px;
+    display: inline-flex;
+    font-family: palatino;
+    font-weight: lighter;
+    color: black;
+    padding: 0 0 3px 0;
+}
+
+h2 {
+
+    border-bottom: 3px solid lightblue;
+    font-size: 18px;
+    display: inline-flex;
+    font-family: palatino;
+    font-weight: lighter;
+    color: black;
+    padding: 0 0 3px 0;
+}
 h1 {
     
     border-bottom: 3px solid lightblue;
     display: inline-flex;
-    font-family: sans-serif;
+    font-family: palatino;
     font-size: 20px;
     font-weight: lighter;
-    color: white;
+    color: black;
     margin: 10px;
     padding: 0 0 3px 0;
 }
 
-#posts {
+/*#posts {
     margin: 25px 0 0 0;
 
-}
+}*/
 
 p {
-    font-family: sans-serif;
+    font-family: palatino;
     font-size: 15px;
     font-weight: lighter;
     margin: 5px 30px;
-    border: 3px solid orange;
-    padding: 20px;
+    border: 3px solid darkblue;
+    padding: 10px;
     background-color: lightblue;
 
 }
 
 #forms {
     margin: 50px 0 0 0;
+    border: 5px
 }
 
 form {
@@ -52,7 +77,7 @@ form {
 button {
     background-color: lightblue;
     border-radius: 5px;
-    color: white;
+    color: black;
     font-family: palatino;
     font-size: 22px;
     padding: 3px;
@@ -65,8 +90,7 @@ button {
 
 .form-group label {
     font-family: palatino;
-    font-size: 15px;
-    font-weight: lighter;
+    font-size: 16px;
 }
 
 .form-group input {
@@ -84,10 +108,10 @@ button {
 .form-submit {
     background-color: lightblue;
     border-radius: 5px;
-    color: white;
+    color: black;
     font-family: palatino;
     font-size: 22px;
-    margin: 11px;
+    margin: 13px;
     padding: 3px;
     min-width: 100px;
 }

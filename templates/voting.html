@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+    <link href="{{ url_for('static', filename='./css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+    {% if session_username is defined %}
+
+        <h1>Hi {{ session_username }}!</h1>
+
+    {% else %}
+
+        <h1>Hi guest!</h1>
+
+    {% endif %}
+
+    <div>
+        You are in Game #{{game.gid}}. 
+        
+    </div>
+
+    <h1>Voting Round</h1>
+
+    <div>
+      Review the responses below and submit your votes (you may not vote for your own ending).
+    </div>
+
+    <form id="voting" action="/voting" method="POST" enctype="multipart/form-data">
+      <label for="voting1">Question 1</label>
+        <select id="voting1" name = "voting1">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <br>
+        </select>
+
+        <label for="voting2">Question 2</label>
+        <select id="voting2" name = "voting2">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <br>
+        </select>
+
+        <label for="voting3">Question 3</label>
+        <select id="voting3" name = "voting3">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <br>
+        </select>
+        
+        {{ form.submit(class="form-submit") }}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </form>
+
+    <div>
+      <h2> 1. {{ question1 }}... </h2>
+    </div>
+    <div id="responses">
+        {% for q in q1 %}
+            <p> {{ q }} </p>
+        {% endfor %}
+    </div>
+
+    <div>
+      <h2> 2. {{ question2 }}... </h2>
+    </div>
+    <div id="responses">
+        {% for q in q2 %}
+            <p> {{ q }} </p>
+        {% endfor %}
+    </div>
+
+    <div>
+      <h2> 3. {{ question3 }}... </h2>
+    </div>
+    <div id="responses">
+        {% for q in q3 %}
+            <p> {{ q }} </p>
+        {% endfor %}
+    </div>        
+    
+
+
+
+{% endblock %}
