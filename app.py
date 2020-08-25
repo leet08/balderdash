@@ -427,7 +427,7 @@ def voting():
 
         # return render_template('waiting.html', title='Voting', game = session_game, session_username=session_user.username, form = form, room = 3)
     else:
-        return render_template('voting.html', title='Voting', question1 = question1.question, question2 = question2.question, question3 = question3.question, q1=q1, q2=q2, q3=q3, game = session_game, session_username=session_user.username, form = form)
+        return render_template('voting.html', title='Voting', question1 = question1.question, question2 = question2.question, question3 = question3.question, q1=q1resp, q2=q2resp, q3=q3resp, game = session_game, session_username=session_user.username, form = form)
 
 
 # GET & POST /create
