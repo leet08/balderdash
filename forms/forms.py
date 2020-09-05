@@ -18,6 +18,8 @@ class PlayForm(FlaskForm):
     response1 = StringField('Your ending:', validators=[DataRequired()])
     response2 = StringField('Your ending:', validators=[DataRequired()])
     response3 = StringField('Your ending:', validators=[DataRequired()])
+    response4 = StringField('Your ending:', validators=[DataRequired()])
+    response5 = StringField('Your ending:', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class VoteForm(FlaskForm):

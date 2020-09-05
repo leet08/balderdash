@@ -20,9 +20,10 @@ app.secret_key = environ.get('SECRET_KEY')
 Db.init_app(app)
 
 # the empty default profile, also test1 first added to current game is user 1
-testProfile = '127'
-emptyProfile = '128'
-adminProfile = '129'
+testProfile = '152'
+emptyProfile = '153'
+adminProfile = '154'
+blankQuestion = '60'
 randomSeed = 0
 
 
@@ -76,7 +77,7 @@ def enter():
 
 	    if userFlag == False and username != 'ADMIN':
 	    	# create a new user
-	    	user = User(username = username, response1 = 'blank', response2 = 'blank', response3 = 'blank', voting1 = 0, voting2 = 0, voting3 = 0) # create new user with blanks
+	    	user = User(username = username, response1 = 'blank', response2 = 'blank', response3 = 'blank', response4= 'blank',response5 = 'blank',voting1 = 0, voting2 = 0, voting3 = 0, voting4 = 0, voting5 = 0) # create new user with blanks
 	    	Db.session.add(user)
 	    	Db.session.commit()
 
@@ -168,18 +169,27 @@ def results():
         question1 = Question.query.filter_by(qid = session_game.qid1).first()
         question2 = Question.query.filter_by(qid = session_game.qid2).first()
         question3 = Question.query.filter_by(qid = session_game.qid3).first()
+        question4 = Question.query.filter_by(qid = session_game.qid4).first()
+        question5 = Question.query.filter_by(qid = session_game.qid5).first()
         players = [player1, player2, player3, player4, player5]
         q1 = [player1.username +": "+ player1.response1, player2.username +": "+ player2.response1, player3.username +": "+ player3.response1, player4.username +": "+ player4.response1, player5.username +": "+ player5.response1, "Correct answer: "+question1.correct]
         q2 = [player1.username +": "+ player1.response2, player2.username +": "+ player2.response2, player3.username +": "+ player3.response2, player4.username +": "+ player4.response2, player5.username +": "+ player5.response2, "Correct answer: "+question2.correct]
         q3 = [player1.username +": "+ player1.response3, player2.username +": "+ player2.response3, player3.username +": "+ player3.response3, player4.username +": "+ player4.response3, player5.username +": "+ player5.response3, "Correct answer: "+question3.correct]
+        q4 = [player1.username +": "+ player1.response4, player2.username +": "+ player2.response4, player3.username +": "+ player3.response4, player4.username +": "+ player4.response4, player5.username +": "+ player5.response4, "Correct answer: "+question4.correct]
+        q5 = [player1.username +": "+ player1.response5, player2.username +": "+ player2.response5, player3.username +": "+ player3.response5, player4.username +": "+ player4.response5, player5.username +": "+ player5.response5, "Correct answer: "+question5.correct]
         v1 = [player1.voting1, player2.voting1, player3.voting1, player4.voting1, player5.voting1]
         v2 = [player1.voting2, player2.voting2, player3.voting2, player4.voting2, player5.voting2]
         v3 = [player1.voting3, player2.voting3, player3.voting3, player4.voting3, player5.voting3]
+        v4 = [player1.voting4, player2.voting4, player3.voting4, player4.voting4, player5.voting4]
+        v5 = [player1.voting5, player2.voting5, player3.voting5, player4.voting5, player5.voting5]
 
         correctVote1 = 0
         correctVote2 = 0
         correctVote3 = 0
+        correctVote4 = 0
+        correctVote5 = 0
         # your vote 1
+        yourVote1 = 0
         if (session_uid.voting1 == 1):
         	yourVote1 = player1.username
         
@@ -214,6 +224,7 @@ def results():
         
 
         # your vote 2
+        yourVote2 = 0
         if (session_uid.voting2 == 1):
         	yourVote2 = player1.username
         
@@ -247,6 +258,7 @@ def results():
         session_uid.score = myPoints1 + myPoints2
 
         # your vote 3
+        yourVote3 = 0
         if (session_uid.voting3 == 1):
         	yourVote3 = player1.username
         
@@ -279,10 +291,78 @@ def results():
         myPoints3 = myVotes3 + correctVote3
         session_uid.score = myPoints1 + myPoints2 + myPoints3
 
+        # your vote 4
+        yourVote4 = 0
+        if (session_uid.voting4 == 1):
+        	yourVote4 = player1.username
+        
+        if (session_uid.voting4 == 2):
+        	yourVote4 = player2.username
+        
+        if (session_uid.voting4 == 3):
+        	yourVote4 = player3.username
+        
+        if (session_uid.voting4 == 4):
+        	yourVote4 = player4.username
+        
+        if (session_uid.voting4 == 5):
+        	yourVote4 = player5.username
+        
+        if (session_uid.voting4 == 6):
+        	yourVote4 = "the correct answer!"
+        	correctVote4 = 2
+
+        # who voted for you
+        myVotes4 = 0
+        myVotesArray4 = []
+        myVotesArray4.append(' ')
+        for p in players:
+        	if p.voting4 == session_uid.playernumber:
+        		myVotesArray4.append(p.username)
+        		myVotes4 = len(myVotesArray4) -1
+
+		# points calculation
+        myPoints4 = myVotes4 + correctVote4
+        session_uid.score = myPoints1 + myPoints2 + myPoints3 + myPoints4 
+
+        # your vote 5
+        yourVote5 = 0
+        if (session_uid.voting5 == 1):
+        	yourVote5 = player1.username
+        
+        if (session_uid.voting5 == 2):
+        	yourVote5 = player2.username
+        
+        if (session_uid.voting5 == 3):
+        	yourVote5 = player3.username
+        
+        if (session_uid.voting5 == 4):
+        	yourVote5 = player4.username
+        
+        if (session_uid.voting5 == 5):
+        	yourVote5 = player5.username
+        
+        if (session_uid.voting5 == 6):
+        	yourVote5 = "the correct answer!"
+        	correctVote5 = 2
+
+        # who voted for you
+        myVotes5 = 0
+        myVotesArray5 = []
+        myVotesArray5.append(' ')
+        for p in players:
+        	if p.voting5 == session_uid.playernumber:
+        		myVotesArray5.append(p.username)
+        		myVotes5 = len(myVotesArray5) -1
+
+		# points calculation
+        myPoints5 = myVotes5 + correctVote5
+        session_uid.score = myPoints1 + myPoints2 + myPoints3 + myPoints4 + myPoints5
+
         Db.session.add(session_uid)
         Db.session.commit()
 
-        return render_template('results.html', title='Results', myPoints1 = myPoints1, myVotesArray1 = myVotesArray1, myVotes1 = myVotes1, yourVote1 = yourVote1, q1 = q1, question1 = question1.question, myPoints2 = myPoints2, myVotesArray2 = myVotesArray2, myVotes2 = myVotes2, yourVote2 = yourVote2, q2 = q2, question2 = question2.question, myPoints3 = myPoints3, myVotesArray3 = myVotesArray3, myVotes3 = myVotes3, yourVote3 = yourVote3, q3 = q3, question3 = question3.question,session_username=session_uid.username, game=session_game)
+        return render_template('results.html', title='Results', myPoints1 = myPoints1, myVotesArray1 = myVotesArray1, myVotes1 = myVotes1, yourVote1 = yourVote1, q1 = q1, question1 = question1.question, myPoints2 = myPoints2, myVotesArray2 = myVotesArray2, myVotes2 = myVotes2, yourVote2 = yourVote2, q2 = q2, question2 = question2.question, myPoints3 = myPoints3, myVotesArray3 = myVotesArray3, myVotes3 = myVotes3, yourVote3 = yourVote3, q3 = q3, question3 = question3.question, myPoints4 = myPoints4, myVotesArray4 = myVotesArray4, myVotes4 = myVotes4, yourVote4 = yourVote4, q4 = q4, question4 = question4.question, myPoints5 = myPoints5, myVotesArray5 = myVotesArray5, myVotes5 = myVotes5, yourVote5 = yourVote5, q5 = q5, question5 = question5.question, session_username=session_uid.username, game=session_game)
     else:
         #all_posts = Post.query.all()
         return render_template('results.html', title='Results', session_username=session_uid.username, game=session_game)
@@ -304,6 +384,19 @@ def results2():
         player5 = User.query.filter_by(uid=session_game.player5).first()
         players = [player1, player2, player3, player4, player5]
 
+        # display for admin results view
+        
+        question1 = Question.query.filter_by(qid = session_game.qid1).first()
+        question2 = Question.query.filter_by(qid = session_game.qid2).first()
+        question3 = Question.query.filter_by(qid = session_game.qid3).first()
+        question4 = Question.query.filter_by(qid = session_game.qid4).first()
+        question5 = Question.query.filter_by(qid = session_game.qid5).first()
+        q1 = [player1.username +": "+ player1.response1, player2.username +": "+ player2.response1, player3.username +": "+ player3.response1, player4.username +": "+ player4.response1, player5.username +": "+ player5.response1, "Correct answer: "+question1.correct]
+        q2 = [player1.username +": "+ player1.response2, player2.username +": "+ player2.response2, player3.username +": "+ player3.response2, player4.username +": "+ player4.response2, player5.username +": "+ player5.response2, "Correct answer: "+question2.correct]
+        q3 = [player1.username +": "+ player1.response3, player2.username +": "+ player2.response3, player3.username +": "+ player3.response3, player4.username +": "+ player4.response3, player5.username +": "+ player5.response3, "Correct answer: "+question3.correct]
+        q4 = [player1.username +": "+ player1.response4, player2.username +": "+ player2.response4, player3.username +": "+ player3.response4, player4.username +": "+ player4.response4, player5.username +": "+ player5.response4, "Correct answer: "+question4.correct]
+        q5 = [player1.username +": "+ player1.response5, player2.username +": "+ player2.response5, player3.username +": "+ player3.response5, player4.username +": "+ player4.response5, player5.username +": "+ player5.response5, "Correct answer: "+question5.correct]
+        
         # points calculation
         highPlayerScore = 0
         highPlayer=[]
@@ -320,7 +413,7 @@ def results2():
         	tie = True
 		
         
-        return render_template('results2.html', title='Results', tie = tie, highPlayerScore = highPlayerScore, highPlayer = highPlayer, players = players, session_username=session_uid.username, game=session_game)
+        return render_template('results2.html', title='Results', question1 = question1, question2 = question2, question3 = question3, question4 = question4, question5 = question5, q1=q1, q2=q2, q3=q3, q4=q4, q5=q5, tie = tie, highPlayerScore = highPlayerScore, highPlayer = highPlayer, players = players, session_username=session_uid.username, game=session_game)
     else:
         #all_posts = Post.query.all()
         return render_template('results2.html', title='Results', session_username=session_uid.username, game=session_game)
@@ -345,11 +438,23 @@ def play():
     session_user = User.query.filter_by(uid=session['uid']).first()
     session_game = Game.query.filter_by(gid=session['gameID']).first()
 
+    question1 = Question.query.filter_by(qid = session_game.qid1).first()
+    question2 = Question.query.filter_by(qid = session_game.qid2).first()
+    question3 = Question.query.filter_by(qid = session_game.qid3).first()
+    question4 = Question.query.filter_by(qid = session_game.qid4).first()
+    question5 = Question.query.filter_by(qid = session_game.qid5).first()
+
     if request.method == 'POST':
         # Init credentials from form request
         session_user.response1 = request.form['response1']
-        session_user.response2 = request.form['response2']
-        session_user.response3 = request.form['response3']
+        if question2.question != 'blank':
+        	session_user.response2 = request.form['response2']
+        if question3.question != 'blank':
+        	session_user.response3 = request.form['response3']
+        if question4.question != 'blank':
+        	session_user.response4 = request.form['response4']
+        if question5.question != 'blank':
+        	session_user.response5 = request.form['response5']
 
         if session['uid'] != adminProfile:
         	Db.session.add(session_user)
@@ -363,10 +468,10 @@ def play():
         player5 = User.query.filter_by(uid=session_game.player5).first()
         players = [player1, player2, player3, player4, player5]
 
-        return render_template('waiting.html', title='Play', players = players, session_game = session_game.gid, session_username=session_user.username, form = form, room = 2)
+        return render_template('waiting.html', title='Play', session_game = session_game.gid,players = players, session_username=session_user.username, form = form, room = 2)
     else:
         
-        return render_template('play.html', title='Play', game = session_game, session_username=session_user.username, form = form)
+        return render_template('play.html', title='Play', game = session_game, question1=question1.question, question2=question2.question, question3=question3.question, question4=question4.question, question5=question5.question, session_username=session_user.username, form = form)
 
 # GET & POST /voting
 @app.route('/voting', methods=['GET', 'POST'])
@@ -386,17 +491,27 @@ def voting():
     player4 = User.query.filter_by(uid=session_game.player4).first()
     player5 = User.query.filter_by(uid=session_game.player5).first()
     players = [player1, player2, player3, player4, player5]
+    playerCount=0
+    for p in players:
+    	if p.username != 'empty':
+    		playerCount=playerCount+1
     question1 = Question.query.filter_by(qid = session_game.qid1).first()
     question2 = Question.query.filter_by(qid = session_game.qid2).first()
     question3 = Question.query.filter_by(qid = session_game.qid3).first()
+    question4 = Question.query.filter_by(qid = session_game.qid4).first()
+    question5 = Question.query.filter_by(qid = session_game.qid5).first()
     q1 = np.array([[1,player1.response1], [2,player2.response1], [3,player3.response1], [4,player4.response1], [5,player5.response1], [6,question1.correct]])
     q2 = np.array([[1,player1.response2], [2,player2.response2], [3,player3.response2], [4,player4.response2], [5,player5.response2], [6,question2.correct]])
     q3 = np.array([[1,player1.response3], [2,player2.response3], [3,player3.response3], [4,player4.response3], [5,player5.response3], [6,question3.correct]])
+    q4 = np.array([[1,player1.response4], [2,player2.response4], [3,player3.response4], [4,player4.response4], [5,player5.response4], [6,question4.correct]])
+    q5 = np.array([[1,player1.response5], [2,player2.response5], [3,player3.response5], [4,player4.response5], [5,player5.response5], [6,question5.correct]])
     
     # get rid of empties
     q1 = q1[~(q1[:,1] =='blank'),:]
     q2 = q2[~(q2[:,1] =='blank'),:]
     q3 = q3[~(q3[:,1] =='blank'),:]
+    q4 = q4[~(q4[:,1] =='blank'),:]
+    q5 = q5[~(q5[:,1] =='blank'),:]
 
     # random by game seed
     gameSeed = session_game.seed
@@ -404,30 +519,46 @@ def voting():
     np.random.shuffle(q1)
     np.random.shuffle(q2)
     np.random.shuffle(q3)
+    np.random.shuffle(q4)
+    np.random.shuffle(q5)
 
     # get rid of extra column
     q1resp = q1[:,1]
     q2resp = q2[:,1]
     q3resp = q3[:,1]
+    q4resp = q4[:,1]
+    q5resp = q5[:,1]
 
     if request.method == 'POST':
         # Get field button values and query vote was for which player's response
         vote1 = int(request.form.get("voting1", None))
-        vote2 = int(request.form.get("voting2", None))
-        vote3 = int(request.form.get("voting3", None))
+        if question2.question != 'blank':
+        	vote2 = int(request.form.get("voting2", None))
+        if question3.question != 'blank':
+        	vote3 = int(request.form.get("voting3", None))
+        if question4.question != 'blank':
+        	vote4 = int(request.form.get("voting4", None))
+        if question5.question != 'blank':
+        	vote5 = int(request.form.get("voting5", None))
         
         session_user.voting1 = q1[vote1-1,0]
-        session_user.voting2 = q2[vote2-1,0]
-        session_user.voting3 = q3[vote3-1,0]
+        if question2.question != 'blank':
+        	session_user.voting2 = q2[vote2-1,0]
+        if question3.question != 'blank':
+        	session_user.voting3 = q3[vote3-1,0]
+        if question4.question != 'blank':
+        	session_user.voting4 = q4[vote4-1,0]
+        if question5.question != 'blank':
+        	session_user.voting5 = q5[vote5-1,0]
 
         if session['uid'] != adminProfile:
             Db.session.add(session_user)
             Db.session.commit()
-        return render_template('waiting.html', title='Voting', players = players, session_game = session_game.gid, session_username=session_user.username, form = form, room = 3)
+        return render_template('waiting.html', title='Voting', playerCount = playerCount, players = players, session_game = session_game.gid, session_username=session_user.username, form = form, room = 3)
 
         # return render_template('waiting.html', title='Voting', game = session_game, session_username=session_user.username, form = form, room = 3)
     else:
-        return render_template('voting.html', title='Voting', question1 = question1.question, question2 = question2.question, question3 = question3.question, q1=q1resp, q2=q2resp, q3=q3resp, game = session_game, session_username=session_user.username, form = form)
+        return render_template('voting.html', title='Voting', playerCount = playerCount,question1 = question1.question, question2 = question2.question, question3 = question3.question, question4 = question4.question,question5 = question5.question,q1=q1resp, q2=q2resp, q3=q3resp, q4=q4resp,q5=q5resp, game = session_game, session_username=session_user.username, form = form)
 
 
 # GET & POST /create
@@ -439,22 +570,36 @@ def create():
     if request.method == 'POST':
     	# is the current empty uid
     	# create random seed int
+    	numberQuestions = int(request.form.get("numberQuestions"))
+    	adminAccess = int(request.form.get("adminResults"))
     	randomSeed = np.random.randint(100)
-    	game = Game(player1=testProfile, player2=emptyProfile, player3=emptyProfile, player4=emptyProfile, player5=emptyProfile, seed = randomSeed)
+    	game = Game(player1=testProfile, player2=emptyProfile, player3=emptyProfile, player4=emptyProfile, player5=emptyProfile, seed = randomSeed, admin = adminAccess)
     	Db.session.add(game)
     	Db.session.commit()
 
     	newGame = Game.query.order_by(-Game.gid).first() # can use just game?
-    	# fill array with random questions
+    	# fill array with random question
     	# shuffle
-    	newQuestions = Question.query.order_by(func.random())[:3]
+    	newQuestions = Question.query.order_by(func.random())[:5]
     	# place in newGame column
-    	newGame.question1 = newQuestions[0].question
-    	newGame.qid1 = newQuestions[0].qid
-    	newGame.question2 = newQuestions[1].question
-    	newGame.qid2 = newQuestions[1].qid
-    	newGame.question3 = newQuestions[2].question
-    	newGame.qid3 = newQuestions[2].qid
+    	if numberQuestions >= 1:
+    		newGame.qid1 = newQuestions[0].qid
+    	if numberQuestions >= 2: 
+    		newGame.qid2 = newQuestions[1].qid
+    	else:
+    		newGame.qid2 = blankQuestion
+    	if numberQuestions >= 3:
+    		newGame.qid3 = newQuestions[2].qid
+    	else:
+    		newGame.qid3 = blankQuestion
+    	if numberQuestions >= 4:
+    		newGame.qid4 = newQuestions[3].qid
+    	else:
+    		newGame.qid4 = blankQuestion
+    	if numberQuestions >= 5:
+    		newGame.qid5 = newQuestions[4].qid
+    	else:
+    		newGame.qid5 = blankQuestion
 
     	Db.session.add(game)
     	Db.session.commit()

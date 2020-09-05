@@ -5,9 +5,62 @@
 {% endblock %}
 
 {% block scripts %}
+    
+    
 {% endblock %}
 
 {% block content %}
+
+    <script>
+    function myFunction1() {
+            var x = document.getElementById("results1");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    function myFunction2() {
+            var x = document.getElementById("results2");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    function myFunction3() {
+            var x = document.getElementById("results3");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    function myFunction4() {
+            var x = document.getElementById("results4");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    function myFunction5() {
+            var x = document.getElementById("results5");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    function myFunction6() {
+            var x = document.getElementById("results6");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }   
+    </script>
 
     {% if session_username is defined %}
 
@@ -23,32 +76,219 @@
         You are in Game #{{game.gid}}. Here are the final results:
         
     </div>
-    <h1> Total scores:</h1>
-    <div id="results2">
-        {% for p in players %}
+
+    {% if game.admin == 1 %}
+
+        <h1> 1: {{question1.question}}... </h1>
+        <button onclick="myFunction1()">Reveal Answers</button>        
+          <div id="results1" style="display:none">
+            <div>
+            
+            
+              {% for q in q1 %}
+                {% if q != 'empty: blank' %}
+                  <p> {{ q }}</p>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          <div>
+            <br>
+            {% for p in players %}
+                {% if p.username != 'empty' %}
+                    {{p.username}} voted for  
+                    {% if p.voting1 != 6 %}
+                        the response written by {{players[p.voting1-1].username}}
+                    {% else %}
+                        the correct answer
+                    {% endif %}
+                    <br>
+                {% endif %}
+            {% endfor %}
+          </div>
+      </div>
+      <br>
+
+      <h1> 2: {{question2.question}}... </h1>
+      <button onclick="myFunction2()">Reveal Answers</button>        
+          <div id="results2" style="display:none">
+      <div id="results">
+          {% for q in q2 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div>
+        <br>
+       {% for p in players %}
             {% if p.username != 'empty' %}
-            <p> {{ p.username }} scored {{p.score}} points</p>
+                {{p.username}} voted for  
+                {% if p.voting2 != 6 %}
+                    the response written by {{players[p.voting2-1].username}}
+                {% else %}
+                    the correct answer
+                {% endif %}
+                <br>
             {% endif %}
         {% endfor %}
-    </div>
 
-    {% if tie == False %}
-    <h1> The winner is 
-      {% for h in highPlayer %}
-            {{h}} with {{highPlayerScore}} points!
-        {% endfor %}</h1>
-    {% endif %}
+      </div>
+      </div>
+      <br>
 
-    {% if tie == True %}
-    <h1> There's a tie between 
-      {% for h in highPlayer %}
-        {% if h != 'empty' %}
-            {{h}}
-        {% endif %}
+      <h1> 3: {{question3.question}}... </h1>
+      <button onclick="myFunction3()">Reveal Answers</button>        
+          <div id="results3" style="display:none">
+      <div id="results">
+          {% for q in q3 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div>
+        <br>
+        {% for p in players %}
+            {% if p.username != 'empty' %}
+                {{p.username}} voted for  
+                {% if p.voting3 != 6 %}
+                    the response written by {{players[p.voting3-1].username}}
+                {% else %}
+                    the correct answer
+                {% endif %}
+                <br>
+            {% endif %}
         {% endfor %}
-      with {{highPlayerScore}} points!</h1>
+
+      </div>
+
+      </div>
+      </div>
+      <br>
+
+      <h1> 4: {{question4.question}}... </h1>
+      <button onclick="myFunction4()">Reveal Answers</button>        
+          <div id="results4" style="display:none">
+      <div id="results">
+          {% for q in q4 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div>
+        <br>
+        {% for p in players %}
+            {% if p.username != 'empty' %}
+                {{p.username}} voted for  
+                {% if p.voting4 != 6 %}
+                    the response written by {{players[p.voting4-1].username}}
+                {% else %}
+                    the correct answer
+                {% endif %}
+                <br>
+            {% endif %}
+        {% endfor %}
+
+      </div>
+
+      </div>
+      </div>
+      <br>
+
+      <h1> 5: {{question5.question}}... </h1>
+      <button onclick="myFunction5()">Reveal Answers</button>        
+          <div id="results5" style="display:none">
+      <div id="results">
+          {% for q in q5 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div>
+        <br>
+        {% for p in players %}
+            {% if p.username != 'empty' %}
+                {{p.username}} voted for  
+                {% if p.voting5 != 6 %}
+                    the response written by {{players[p.voting5-1].username}}
+                {% else %}
+                    the correct answer
+                {% endif %}
+                <br>
+            {% endif %}
+        {% endfor %}
+
+      </div>
+      </div>
+      <br>
+
+    <h1> Total scores:</h1> <button onclick="myFunction6()">Reveal Final Scores</button>        
+          <div id="results6" style="display:none">
+            <div>
+                {% for p in players %}
+                    {% if p.username != 'empty' %}
+                    <p> {{ p.username }} scored {{p.score}} points</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if tie == False %}
+            <h1> The winner is 
+              {% for h in highPlayer %}
+                    {{h}} with {{highPlayerScore}} points!
+                {% endfor %}</h1>
+            {% endif %}
+
+            {% if tie == True %}
+            <h1> There's a tie between 
+              {% for h in highPlayer %}
+                {% if h != 'empty' %}
+                    {{h}}
+                {% endif %}
+                {% endfor %}
+              with {{highPlayerScore}} points!</h1>
     
-    {% endif %}
+             {% endif %}
+            </div>
+
+            {% else %}
+
+            <div>
+            <div>
+                {% for p in players %}
+                    {% if p.username != 'empty' %}
+                    <p> {{ p.username }} scored {{p.score}} points</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if tie == False %}
+            <h1> The winner is 
+              {% for h in highPlayer %}
+                    {{h}} with {{highPlayerScore}} points!
+                {% endfor %}</h1>
+            {% endif %}
+
+            {% if tie == True %}
+            <h1> There's a tie between 
+              {% for h in highPlayer %}
+                {% if h != 'empty' %}
+                    {{h}}
+                {% endif %}
+                {% endfor %}
+              with {{highPlayerScore}} points!</h1>
+    
+             {% endif %}
+            </div>
+
+            {% endif %}
 
 
 

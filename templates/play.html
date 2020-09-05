@@ -35,7 +35,7 @@
         {{ form.hidden_tag() }}
 
         <div class="form-group">
-            1. {{ game.question1 }}...<br>
+            1. {{ question1 }}...<br>
             {{ form.response1.label }}<br>
             {{ form.response1(size=84) }}<br>
             {% for error in form.response1.errors %}
@@ -43,23 +43,49 @@
             {% endfor %}
         </div>
 
+        {% if question2 != 'blank' %}
         <div class="form-group">
-            2. {{ game.question2 }}...<br>
+            2. {{ question2 }}...<br>
             {{ form.response2.label }}<br>
             {{ form.response2(size=84) }}<br>
             {% for error in form.response2.errors %}
                 <span class="form-error-message">[{{ error }}]</span>
             {% endfor %}
         </div>
+        {% endif %}
 
+        {% if question3 != 'blank' %}
         <div class="form-group">
-            3. {{ game.question3 }}...<br>
+            3. {{ question3 }}...<br>
             {{ form.response3.label }}<br>
             {{ form.response3(size=84) }}<br>
             {% for error in form.response3.errors %}
                 <span class="form-error-message">[{{ error }}]</span>
             {% endfor %}
         </div>
+        {% endif %}
+
+        {% if question4 != 'blank' %}
+        <div class="form-group">
+            4. {{ question4 }}...<br>
+            {{ form.response4.label }}<br>
+            {{ form.response4(size=84) }}<br>
+            {% for error in form.response4.errors %}
+                <span class="form-error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if question5 != 'blank' %}
+        <div class="form-group">
+            5. {{ question5 }}...<br>
+            {{ form.response5.label }}<br>
+            {{ form.response5(size=84) }}<br>
+            {% for error in form.response5.errors %}
+                <span class="form-error-message">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        {% endif %}
 
 
         {{ form.submit(class="form-submit") }}

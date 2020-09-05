@@ -14,7 +14,27 @@
 
         <h2>Click below to create a game:</h2>
     
-        <form action="/create" method="POST">
+        <form id = "create" action="/create" method="POST">
+            <label for="numberQuestions">How many questions per game?</label>
+                <select id="numberQuestions" name = "numberQuestions">
+                  <option value=5>5</option>
+                  <option value=4>4</option>
+                  <option value=3>3</option>
+                  <option value=2>2</option>
+                  <option value=1>1</option>
+                  <br>
+                </select>
+                <br>
+            <label for="adminResults">Only allow admin access to results?</label>
+                <select id="adminResults" name = "adminResults">
+                    <option value=0>no</option>
+                  <option value=1>yes</option>
+                  <br>
+                </select>
+                <br>
+                *Select 'yes' to limit results page to admin only. Admin must login with username 'ADMIN' and does not participate in writing or voting.
+                <br>
+                <br>
             <button type="submit"> Create new game</button>
             {% with messages = get_flashed_messages() %}
             {% if messages %}

@@ -12,13 +12,13 @@ class Game(Db.Model):
     player3 = Db.Column(Db.String(64))
     player4 = Db.Column(Db.String(64))
     player5 = Db.Column(Db.String(64))
-    question1 = Db.Column(Db.Text())
-    question2 = Db.Column(Db.Text())
-    question3 = Db.Column(Db.Text())
     qid1 = Db.Column(Db.Integer)
     qid2 = Db.Column(Db.Integer)
     qid3 = Db.Column(Db.Integer)
+    qid4 = Db.Column(Db.Integer)
+    qid5 = Db.Column(Db.Integer)
     seed = Db.Column(Db.Integer)
+    admin = Db.Column(Db.Integer)
     
 
 class User(Db.Model):
@@ -28,9 +28,13 @@ class User(Db.Model):
     response1 = Db.Column(Db.Text())
     response2 = Db.Column(Db.Text())
     response3 = Db.Column(Db.Text())
+    response4 = Db.Column(Db.Text())
+    response5 = Db.Column(Db.Text())
     voting1 = Db.Column(Db.Integer)
     voting2 = Db.Column(Db.Integer)
     voting3 = Db.Column(Db.Integer)
+    voting4 = Db.Column(Db.Integer)
+    voting5 = Db.Column(Db.Integer)
     playernumber = Db.Column(Db.Integer)
     score = Db.Column(Db.Integer)
 

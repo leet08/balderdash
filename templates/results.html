@@ -20,84 +20,169 @@
     {% endif %}
 
     <div>
-        You are in Game #{{game.gid}}. Here are your results:
+        You are in Game #{{game.gid}}. 
+
         
     </div>
-    <h1> 1: {{question1}}... </h1>
-    <div id="results">
-        {% for q in q1 %}
-          {% if q != 'empty: blank' %}
-            <p> {{ q }}</p>
-          {% endif %}
-        {% endfor %}
-    </div>
 
-    <div>
-      <br>
-      You voted for: {{yourVote1}}<br>
-      {% if myVotes1 > 0 %}
-        These {{myVotes1}} people voted for you: 
-        {% for v in myVotesArray1 %}
-          <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
-        {% endfor %}
-      {% else %}
-        Nobody voted for you.<br>
+    {% if game.admin != 1 %}
+
+      <div>
+        Here are your results:
+      </div>
+      <h1> 1: {{question1}}... </h1>
+      <div id="results">
+          {% for q in q1 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div>
+        <br>
+        You voted for: {{yourVote1}}<br>
+        {% if myVotes1 > 0 %}
+          These {{myVotes1}} people voted for you: 
+          {% for v in myVotesArray1 %}
+            <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+          {% endfor %}
+        {% else %}
+          Nobody voted for you.<br>
+        {% endif %}
+        You earned {{myPoints1}} points this round!<br><br>
+
+      </div>
+
+      {% if question2 != 'blank' %}
+      <h1> 2: {{question2}}... </h1>
+      <div id="results">
+          {% for q in q2 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div>
+        <br>
+        You voted for: {{yourVote2}}<br>
+        {% if myVotes2 > 0 %}
+          These {{myVotes2}} people voted for you: 
+          {% for v in myVotesArray2 %}
+            <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+          {% endfor %}
+        {% else %}
+          Nobody voted for you.<br>
+        {% endif %}
+        You earned {{myPoints2}} points this round!<br><br>
+
+      </div>
       {% endif %}
-      You earned {{myPoints1}} points this round!<br><br>
 
-    </div>
+      {% if question3 != 'blank' %}
+      <h1> 3: {{question3}}... </h1>
+      <div id="results">
+          {% for q in q3 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
 
-    <h1> 2: {{question2}}... </h1>
-    <div id="results">
-        {% for q in q2 %}
-          {% if q != 'empty: blank' %}
-            <p> {{ q }}</p>
-          {% endif %}
-        {% endfor %}
-    </div>
+      <div>
+        <br>
+        You voted for: {{yourVote3}}<br>
+        {% if myVotes3 > 0 %}
+          These {{myVotes3}} people voted for you: 
+          {% for v in myVotesArray3 %}
+             <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+          {% endfor %}
+        {% else %}
+          Nobody voted for you.<br>
+        {% endif %}
+        You earned {{myPoints3}} points this round!<br><br>
 
-    <div>
-      <br>
-      You voted for: {{yourVote2}}<br>
-      {% if myVotes2 > 0 %}
-        These {{myVotes2}} people voted for you: 
-        {% for v in myVotesArray2 %}
-          <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
-        {% endfor %}
-      {% else %}
-        Nobody voted for you.<br>
+      </div>
+
+      </div>
       {% endif %}
-      You earned {{myPoints2}} points this round!<br><br>
 
-    </div>
+      {% if question4 != 'blank' %}
+      <h1> 4: {{question4}}... </h1>
+      <div id="results">
+          {% for q in q4 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
 
-    <h1> 3: {{question3}}... </h1>
-    <div id="results">
-        {% for q in q3 %}
-          {% if q != 'empty: blank' %}
-            <p> {{ q }}</p>
-          {% endif %}
-        {% endfor %}
-    </div>
+      <div>
+        <br>
+        You voted for: {{yourVote4}}<br>
+        {% if myVotes4 > 0 %}
+          These {{myVotes4}} people voted for you: 
+          {% for v in myVotesArray4 %}
+            <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+          {% endfor %}
+        {% else %}
+          Nobody voted for you.<br>
+        {% endif %}
+        You earned {{myPoints4}} points this round!<br><br>
 
-    <div>
-      <br>
-      You voted for: {{yourVote3}}<br>
-      {% if myVotes3 > 0 %}
-        These {{myVotes3}} people voted for you: 
-        {% for v in myVotesArray3 %}
-           <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
-        {% endfor %}
-      {% else %}
-        Nobody voted for you.<br>
+      </div>
+
+      </div>
       {% endif %}
-      You earned {{myPoints3}} points this round!<br><br>
 
-    </div>
+      {% if question5 != 'blank' %}
+      <h1> 5: {{question5}}... </h1>
+      <div id="results">
+          {% for q in q5 %}
+            {% if q != 'empty: blank' %}
+              <p> {{ q }}</p>
+            {% endif %}
+          {% endfor %}
+      </div>
 
-    <div style="font-size:22px">
-      Please wait for your moderator to tell you when to continue. Then click here to go to final results: <a href="/results2">results</a><br><br>
-    </div>
+      <div>
+        <br>
+        You voted for: {{yourVote5}}<br>
+        {% if myVotes5 > 0 %}
+          These {{myVotes5}} people voted for you: 
+          {% for v in myVotesArray5 %}
+            <p1 style="margin: 10px"> <b>{{v}}  </b><br></p1>
+          {% endfor %}
+        {% else %}
+          Nobody voted for you.<br>
+        {% endif %}
+        You earned {{myPoints5}} points this round!<br><br>
+
+      </div>
+      {% endif %}
+
+      <div style="font-size:22px">
+        Please wait for your moderator to tell you when to continue. Then click here to go to final results: <a href="/results2">results</a><br><br>
+      </div>
+      <form action="/logout" method="POST">
+        <button type="submit"> Log out</button>
+    </form>
+    {% else %}
+
+      {% if session_username != 'ADMIN' %}
+        <div style="font-size:22px">
+          Calculating your score... please wait for your moderator to show the final results. </a><br><br>
+        </div>
+      {% else %}
+        <div style="font-size:22px">
+        Click here to go to moderator results: <a href="/results2">results</a><br><br>
+      </div>
+      {% endif %}
+
+    {% endif %}
+
+
         
 
 
