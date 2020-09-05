@@ -31,7 +31,16 @@
     </div>
 
     <form id="voting" action="/voting" method="POST" enctype="multipart/form-data">
-      <label for="voting1">Question 1</label>
+      
+    <div>
+      <h2> 1. {{ question1 }}... </h2>
+    </div>
+    <div id="responses">
+        {% for q in q1 %}
+            <p> {{ q }} </p>
+        {% endfor %}
+
+        <label for="voting1">Question 1</label>
         <select id="voting1" name = "voting1">
           <option value=1>1</option>
           <option value=2>2</option>
@@ -49,91 +58,6 @@
           {% endif %}
           <br>
         </select>
-
-       
-
-        {% if question3 != 'blank' %}
-        <label for="voting3">Question 3</label>
-        <select id="voting3" name = "voting3">
-          <option value=1>1</option>
-          <option value=2>2</option>
-          {% if playerCount >= 2 %}
-          <option value=3>3</option>
-          {% endif %}
-          {% if playerCount >= 3 %}
-          <option value=4>4</option>
-          {% endif %}
-          {% if playerCount >= 4 %}
-          <option value=5>5</option>
-          {% endif %}
-          {% if playerCount >= 5 %}
-          <option value=6>6</option>
-          {% endif %}
-          <br>
-        </select>
-        {% endif %}
-
-        {% if question4 != 'blank' %}
-        <label for="voting4">Question 4</label>
-        <select id="voting4" name = "voting4">
-          <option value=1>1</option>
-          <option value=2>2</option>
-          {% if playerCount >= 2 %}
-          <option value=3>3</option>
-          {% endif %}
-          {% if playerCount >= 3 %}
-          <option value=4>4</option>
-          {% endif %}
-          {% if playerCount >= 4 %}
-          <option value=5>5</option>
-          {% endif %}
-          {% if playerCount >= 5 %}
-          <option value=6>6</option>
-          {% endif %}
-          <br>
-        </select>
-        {% endif %}
-
-        {% if question5 != 'blank' %}
-        <label for="voting5">Question 5</label>
-        <select id="voting5" name = "voting5">
-          <option value=1>1</option>
-          <option value=2>2</option>
-          {% if playerCount >= 2 %}
-          <option value=3>3</option>
-          {% endif %}
-          {% if playerCount >= 3 %}
-          <option value=4>4</option>
-          {% endif %}
-          {% if playerCount >= 4 %}
-          <option value=5>5</option>
-          {% endif %}
-          {% if playerCount >= 5 %}
-          <option value=6>6</option>
-          {% endif %}
-          <br>
-        </select>
-        {% endif %}
-        
-        {{ form.submit(class="form-submit") }}
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-            </ul>
-        {% endif %}
-        {% endwith %}
-    </form>
-
-    <div>
-      <h2> 1. {{ question1 }}... </h2>
-    </div>
-    <div id="responses">
-        {% for q in q1 %}
-            <p> {{ q }} </p>
-        {% endfor %}
     </div>
 
     {% if question2 != 'blank' %}
@@ -144,10 +68,7 @@
         {% for q in q2 %}
             <p> {{ q }} </p>
         {% endfor %}
-    </div>
-    {% endif %}
 
-     {% if question2 != 'blank' %}
         <label for="voting2">Question 2</label>
         <select id="voting2" name = "voting2">
           <option value=1>1</option>
@@ -166,7 +87,11 @@
           {% endif %}
           <br>
         </select>
-        {% endif %}
+    </div>
+    {% endif %}
+
+
+        
 
     {% if question3 != 'blank' %}
     <div>
@@ -176,6 +101,25 @@
         {% for q in q3 %}
             <p> {{ q }} </p>
         {% endfor %}
+
+        <label for="voting3">Question 3</label>
+        <select id="voting3" name = "voting3">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          {% if playerCount >= 2 %}
+          <option value=3>3</option>
+          {% endif %}
+          {% if playerCount >= 3 %}
+          <option value=4>4</option>
+          {% endif %}
+          {% if playerCount >= 4 %}
+          <option value=5>5</option>
+          {% endif %}
+          {% if playerCount >= 5 %}
+          <option value=6>6</option>
+          {% endif %}
+          <br>
+        </select>
     </div> 
     {% endif %}   
 
@@ -187,6 +131,25 @@
         {% for q in q4 %}
             <p> {{ q }} </p>
         {% endfor %}
+
+        <label for="voting4">Question 4</label>
+        <select id="voting4" name = "voting4">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          {% if playerCount >= 2 %}
+          <option value=3>3</option>
+          {% endif %}
+          {% if playerCount >= 3 %}
+          <option value=4>4</option>
+          {% endif %}
+          {% if playerCount >= 4 %}
+          <option value=5>5</option>
+          {% endif %}
+          {% if playerCount >= 5 %}
+          <option value=6>6</option>
+          {% endif %}
+          <br>
+        </select>
     </div>  
     {% endif %}
 
@@ -198,8 +161,39 @@
         {% for q in q5 %}
             <p> {{ q }} </p>
         {% endfor %}
+
+        <label for="voting5">Question 5</label>
+        <select id="voting5" name = "voting5">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          {% if playerCount >= 2 %}
+          <option value=3>3</option>
+          {% endif %}
+          {% if playerCount >= 3 %}
+          <option value=4>4</option>
+          {% endif %}
+          {% if playerCount >= 4 %}
+          <option value=5>5</option>
+          {% endif %}
+          {% if playerCount >= 5 %}
+          <option value=6>6</option>
+          {% endif %}
+          <br>
+        </select>
     </div>
-    {% endif %}      
+    {% endif %}   
+
+    {{ form.submit(class="form-submit") }}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </form>   
     
 
 
