@@ -109,6 +109,7 @@
       </div>
       <br>
 
+      {% if question2.question != 'blank' %}
       <h1> 2: {{question2.question}}... </h1>
       <button onclick="myFunction2()">Reveal Answers</button>        
           <div id="results2" style="display:none">
@@ -136,8 +137,10 @@
 
       </div>
       </div>
+      {% endif %}
       <br>
 
+      {% if question3.question != 'blank' %}
       <h1> 3: {{question3.question}}... </h1>
       <button onclick="myFunction3()">Reveal Answers</button>        
           <div id="results3" style="display:none">
@@ -167,8 +170,10 @@
 
       </div>
       </div>
+      {% endif %}
       <br>
 
+      {% if question4.question != 'blank' %}
       <h1> 4: {{question4.question}}... </h1>
       <button onclick="myFunction4()">Reveal Answers</button>        
           <div id="results4" style="display:none">
@@ -198,8 +203,10 @@
 
       </div>
       </div>
+      {% endif %}
       <br>
 
+      {% if question5.question != 'blank' %}
       <h1> 5: {{question5.question}}... </h1>
       <button onclick="myFunction5()">Reveal Answers</button>        
           <div id="results5" style="display:none">
@@ -227,6 +234,7 @@
 
       </div>
       </div>
+      {% endif %}
       <br>
 
     <h1> Total scores:</h1> <button onclick="myFunction6()">Reveal Final Scores</button>        
