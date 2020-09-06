@@ -96,9 +96,9 @@
             <br>
             {% for p in players %}
                 {% if p.username != 'empty' %}
-                    {{p.username}} voted for  
+                    <b>{{p.username}}</b> voted for  
                     {% if p.voting1 != 6 %}
-                        the response written by {{players[p.voting1-1].username}}
+                        the response written by <b>{{players[p.voting1-1].username}}</b>
                     {% else %}
                         the correct answer
                     {% endif %}
@@ -125,9 +125,9 @@
         <br>
        {% for p in players %}
             {% if p.username != 'empty' %}
-                {{p.username}} voted for  
+                <b>{{p.username}}</b> voted for  
                 {% if p.voting2 != 6 %}
-                    the response written by {{players[p.voting2-1].username}}
+                    the response written by <b>{{players[p.voting2-1].username}}</b>
                 {% else %}
                     the correct answer
                 {% endif %}
@@ -156,9 +156,9 @@
         <br>
         {% for p in players %}
             {% if p.username != 'empty' %}
-                {{p.username}} voted for  
+                <b>{{p.username}}</b> voted for  
                 {% if p.voting3 != 6 %}
-                    the response written by {{players[p.voting3-1].username}}
+                    the response written by <b>{{players[p.voting3-1].username}}</b>
                 {% else %}
                     the correct answer
                 {% endif %}
@@ -189,9 +189,9 @@
         <br>
         {% for p in players %}
             {% if p.username != 'empty' %}
-                {{p.username}} voted for  
+                <b>{{p.username}}</b> voted for  
                 {% if p.voting4 != 6 %}
-                    the response written by {{players[p.voting4-1].username}}
+                    the response written by <b>{{players[p.voting4-1].username}}</b>
                 {% else %}
                     the correct answer
                 {% endif %}
@@ -222,9 +222,9 @@
         <br>
         {% for p in players %}
             {% if p.username != 'empty' %}
-                {{p.username}} voted for  
+                <b>{{p.username}}</b> voted for  
                 {% if p.voting5 != 6 %}
-                    the response written by {{players[p.voting5-1].username}}
+                    the response written by <b>{{players[p.voting5-1].username}}</b>
                 {% else %}
                     the correct answer
                 {% endif %}
