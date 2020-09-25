@@ -23,7 +23,7 @@ Db.init_app(app)
 testProfile = '152'
 emptyProfile = '153'
 adminProfile = '154'
-blankQuestion = '60'
+blankQuestion = '1'
 randomSeed = 0
 
 
