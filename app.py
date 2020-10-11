@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from flask import Flask, flash, render_template, request, url_for, redirect, jsonify, session
 from models.models import Db, Game, User, Question
-from forms.forms import CreateGame, EnterGame, PlayForm, VoteForm
+from forms.forms import CreateGame, EnterGame, PlayForm, VoteForm, RemoveUserForm
 from os import environ
 import sys
 from passlib.hash import sha256_crypt
