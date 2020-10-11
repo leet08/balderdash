@@ -136,43 +136,41 @@ def removeuser():
     # Init form
     form = RemoveUserForm()
 
-    # Control by login status
-    if 'username' in session:
-        session_uid = User.query.filter_by(uid=session['uid']).first()
-        session_game = Game.query.filter_by(gid=session['gameID']).first()
-        #posts = Post.query.filter_by(author=session_user.uid).all()
+    session_uid = User.query.filter_by(uid=session['uid']).first()
+    session_game = Game.query.filter_by(gid=session['gameID']).first()
+    #posts = Post.query.filter_by(author=session_user.uid).all()
 
-        # which waiting room (1-3) for if reconnecting
-        if session_uid.response1 is None:
-            room = 1
-        if session_uid.response1 is not None and session_uid.voting1 is None:
-            room = 2
-        if session_uid.response1 is not None and session_uid.voting1 is not None:   
-            room = 3
+    # which waiting room (1-3) for if reconnecting
+    if session_uid.response1 is None:
+        room = 1
+    if session_uid.response1 is not None and session_uid.voting1 is None:
+        room = 2
+    if session_uid.response1 is not None and session_uid.voting1 is not None:   
+        room = 3
 
-        if request.method == 'POST':
-            # Get field button values and query vote was for which player's response
-            removeuser_entry = request.form.get("removeuser", None)
-            if removeuser_entry == 1:
-                session_game.player1 = emptyProfile
-            if removeuser_entry == 2:
-                session_game.player2 = emptyProfile
-            if removeuser_entry == 3:
-                session_game.player3 = emptyProfile
-            if removeuser_entry == 4:
-                session_game.player4 = emptyProfile
-            if removeuser_entry == 5:
-                session_game.player5 = emptyProfile
-            if removeuser_entry == 6:
-                session_game.player6 = emptyProfile
+    if request.method == 'POST':
+        # Get field button values and query vote was for which player's response
+        removeuser_entry = int(request.form.get("removeuser", None))
+        if removeuser_entry == 1:
+            session_game.player1 = emptyProfile
+        if removeuser_entry == 2:
+            session_game.player2 = emptyProfile
+        if removeuser_entry == 3:
+            session_game.player3 = emptyProfile
+        if removeuser_entry == 4:
+            session_game.player4 = emptyProfile
+        if removeuser_entry == 5:
+            session_game.player5 = emptyProfile
+        if removeuser_entry == 6:
+            session_game.player6 = emptyProfile
 
-            Db.session.add(session_game)
-            Db.session.commit()
+        Db.session.add(session_game)
+        Db.session.commit()
 
-        return render_template('waiting.html', title='Waiting', room = room-1, players = [" "], session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = 1, players = [" "], session_username=session_uid.username, session_game=session_game)
     else:
         #all_posts = Post.query.all()
-        return render_template('waiting.html', title='Waiting', room = room-1, players = [" "], session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
    
 @app.route('/waiting')
 def waiting():
