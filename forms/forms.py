@@ -15,11 +15,11 @@ class EnterGame(FlaskForm):
 	submit = SubmitField('Enter game')
 
 class PlayForm(FlaskForm):
-    response1 = StringField('Your ending:', validators=[DataRequired()])
-    response2 = StringField('Your ending:', validators=[DataRequired()])
-    response3 = StringField('Your ending:', validators=[DataRequired()])
-    response4 = StringField('Your ending:', validators=[DataRequired()])
-    response5 = StringField('Your ending:', validators=[DataRequired()])
+    response1 = StringField('Your ending:')
+    response2 = StringField('Your ending:')
+    response3 = StringField('Your ending:')
+    response4 = StringField('Your ending:')
+    response5 = StringField('Your ending:')
     submit = SubmitField('Submit')
 
 class VoteForm(FlaskForm):

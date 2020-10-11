@@ -66,6 +66,33 @@
         
     </div>
 
+    {% if session_username is "ADMIN" %}
+        <form id="removeuser" action="/removeuser" method="POST" enctype="multipart/form-data">
+        <label style="padding: 10px"  for="removeuser">Remove a user?</label>
+        <select id="removeuser" name = "removeuser">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <br>
+        </select>
+
+            {{ form.submit(class="form-submit") }}
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </form>  
+
+    {% endif %}
+
     <form action="/logout" method="POST">
         <button type="submit"> Log out</button>
     </form>
