@@ -183,7 +183,10 @@ def waiting():
         if session_uid.response1 is not None and session_uid.voting1 is not None:	
         	room = 3
 
-        return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
+        Db.session.add(session_game)
+        Db.session.commit()
+
+        return render_template('waiting.html', title='Waiting', room = room-1, players = [" "], session_username=session_uid.username, session_game=session_game)
     else:
         #all_posts = Post.query.all()
         return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
