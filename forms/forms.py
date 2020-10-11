@@ -28,6 +28,9 @@ class VoteForm(FlaskForm):
     #voting3 = RadioField('Question 3 Vote', choices = [])
     submit = SubmitField('Submit')
 
+class RemoveUserForm(FlaskForm):
+    submit = SubmitField('Submit')
+
 class NewpostForm(FlaskForm):
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')

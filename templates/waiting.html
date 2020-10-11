@@ -79,16 +79,7 @@
           <br>
         </select>
 
-            {{ form.submit(class="form-submit") }}
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-                </ul>
-            {% endif %}
-            {% endwith %}
+        <button type="submit"> Remove</button>
         </form>  
 
     {% endif %}
