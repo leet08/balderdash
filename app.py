@@ -132,6 +132,10 @@ def enter():
 # GET & POST /removeuser
 @app.route('/removeuser', methods=['GET', 'POST'])
 def removeuser():
+
+    # Init form
+    form = RemoveUserForm()
+
     # Control by login status
     if 'username' in session:
         session_uid = User.query.filter_by(uid=session['uid']).first()
