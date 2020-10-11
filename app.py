@@ -162,10 +162,13 @@ def removeuser():
             if removeuser_entry == 6:
                 session_game.player6 = emptyProfile
 
-        return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
+            Db.session.add(session_game)
+            Db.session.commit()
+
+        return render_template('waiting.html', title='Waiting', room = room-1, players = [" "], session_username=session_uid.username, session_game=session_game)
     else:
         #all_posts = Post.query.all()
-        return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = room-1, players = [" "], session_username=session_uid.username, session_game=session_game)
    
 @app.route('/waiting')
 def waiting():
@@ -183,10 +186,7 @@ def waiting():
         if session_uid.response1 is not None and session_uid.voting1 is not None:	
         	room = 3
 
-        Db.session.add(session_game)
-        Db.session.commit()
-
-        return render_template('waiting.html', title='Waiting', room = room-1, players = [" "], session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
     else:
         #all_posts = Post.query.all()
         return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
