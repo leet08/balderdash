@@ -83,20 +83,15 @@
         <button onclick="myFunction1()">Reveal Answers</button>        
           <div id="results1" style="display:none">
             <div>
-            
-            
               {% for q in q1 %}
                 {% if q != 'empty: blank' %}
-                <button onclick="myFunction1()">Reveal Answers</button>    
-                  <p id="results2" style="display:none"> {{ q }}</p>
+                  <p> {{ q }}</p>
                 {% endif %}
               {% endfor %}
             </div>
 
           <div>
             <br>
-            <button onclick="myFunction1()">Reveal Answers</button>  
-            <div id="results3" style="display:none">
             {% for p in players %}
                 {% if p.username != 'empty' %}
                     <b>{{p.username}}</b> voted for  
@@ -108,7 +103,6 @@
                     <br>
                 {% endif %}
             {% endfor %}
-            </div>
           </div>
       </div>
       <br>
