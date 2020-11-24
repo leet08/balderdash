@@ -87,7 +87,8 @@
             
               {% for q in q1 %}
                 {% if q != 'empty: blank' %}
-                  <p> {{ q }}</p>
+                <button onclick="myFunction1()">Reveal Answers</button>    
+                  <p id="results1" style="display:none"> {{ q }}</p>
                 {% endif %}
               {% endfor %}
             </div>
