@@ -438,7 +438,7 @@ def results2():
         q3 = [player1.username +": "+ player1.response3, player2.username +": "+ player2.response3, player3.username +": "+ player3.response3, player4.username +": "+ player4.response3, player5.username +": "+ player5.response3, "Correct answer: "+question3.correct]
         q4 = [player1.username +": "+ player1.response4, player2.username +": "+ player2.response4, player3.username +": "+ player3.response4, player4.username +": "+ player4.response4, player5.username +": "+ player5.response4, "Correct answer: "+question4.correct]
         q5 = [player1.username +": "+ player1.response5, player2.username +": "+ player2.response5, player3.username +": "+ player3.response5, player4.username +": "+ player4.response5, player5.username +": "+ player5.response5, "Correct answer: "+question5.correct]
-        
+         
         # points calculation
         highPlayerScore = 0
         highPlayer=[]

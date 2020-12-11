@@ -46,28 +46,34 @@
           <div id="results1" style="display:none">
             <div>
               {% if q1[0] != 'empty: blank' %}
+                <p> {{players[0].username}} wrote: </p>
                 <button onclick="myFunction('response1-1')">Reveal Response</button> 
-                <p id="response1-1" style="display:none"> {{ q1[0] }}</p>
+                <p id="response1-1" style="display:none"> {{ players[0].response1 }}</p>
               {% endif %}
               {% if q1[1] != 'empty: blank' %}
+                <p> {{players[0].username}} wrote: </p>
                 <button onclick="myFunction('response1-2')">Reveal Response</button> 
-                <p id="response1-2" style="display:none"> {{ q1[1] }}</p>
+                <p id="response1-2" style="display:none"> {{ players[1].response1 }}</p>
               {% endif %}
               {% if q1[2] != 'empty: blank' %}
+                <p> {{players[0].username}} wrote: </p>
                 <button onclick="myFunction('response1-3')">Reveal Response</button>  
-                <p id="response1-3" style="display:none"> {{ q1[2] }}</p>
+                <p id="response1-3" style="display:none"> {{ players[2].response1 }}</p>
               {% endif %}
               {% if q1[3] != 'empty: blank' %}
+                <p> {{players[0].username}} wrote: </p>
                 <button onclick="myFunction('response1-4')">Reveal Response</button> 
-                <p id="response1-4" style="display:none"> {{ q1[3] }}</p>
+                <p id="response1-4" style="display:none"> {{ players[3].response1 }}</p>
               {% endif %}
               {% if q1[4] != 'empty: blank' %}
+                <p> {{players[0].username}} wrote: </p>
                 <button onclick="myFunction('response1-5')">Reveal Response</button> 
-                <p id="response1-5" style="display:none"> {{ q1[4] }}</p>
+                <p id="response1-5" style="display:none"> {{ players[4].response1 }}</p>
               {% endif %}
               {% if q1[5] != 'empty: blank' %}
+                <p> The correct answer is: </p>
                 <button onclick="myFunction('response1-6')">Reveal Response</button> 
-                <p id="response1-6" style="display:none"> {{ q1[5] }}</p>
+                <p id="response1-6" style="display:none"> {{ players[5].response1 }}</p>
               {% endif %}
             </div>
 
