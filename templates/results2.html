@@ -45,10 +45,12 @@
         <button onclick="myFunction('results1')">Reveal Answers</button>        
           <div id="results1" style="display:none">
             <div>
-              {% for q in q1 %}
+              {% for index,q in enumerate(q1, start=1) %}
                 {% if q != 'empty: blank' %}
-                  <p id="response1-1" style="display:none"> {{ q }}</p>
-                  <button onclick="myFunction('response1-1')">Reveal Answers</button> 
+                  {% id = "response1" + str(index) %}
+                  <p id=id style="display:none"> {{ q }}</p>
+                  <br>
+                  <button onclick="myFunction(id)">Reveal Response</button> 
                 {% endif %}
               {% endfor %}
             </div>
