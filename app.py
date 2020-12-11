@@ -453,6 +453,9 @@ def results2():
         		highPlayer.append(p.username)
         if len(highPlayer) >1:
         	tie = True
+
+        # create response button names
+        #responseButtons = ["resp1-1", "resp1-2", "resp1-3", "resp1-4", "resp1-5", "resp1-6"; "resp2-1", "resp2-2", "resp2-3", "resp2-4", "resp2-5", "resp2-6"; "resp3-1", "resp3-2", "resp3-3", "resp3-4", "resp3-5", "resp3-6"; "resp4-1", "resp4-2", "resp4-3", "resp4-4", "resp4-5", "resp4-6"; "resp5-1", "resp5-2", "resp5-3", "resp5-4", "resp5-5", "resp5-6"] 
 		
         
         return render_template('results2.html', title='Results', question1 = question1, question2 = question2, question3 = question3, question4 = question4, question5 = question5, q1=q1, q2=q2, q3=q3, q4=q4, q5=q5, tie = tie, highPlayerScore = highPlayerScore, highPlayer = highPlayer, players = players, session_username=session_uid.username, game=session_game)
