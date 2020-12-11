@@ -45,20 +45,22 @@
         <button onclick="myFunction('results1')">Reveal Answers</button>        
           <div id="results1" style="display:none">
             <div>
-              {% if q != 'empty: blank' %}
-                <p id="response1-1" style="display:none"> {{ q[0] }}</p>
-                <button onclick="myFunction('response1-1')">Reveal Response 1</button> <br>
-                <p id="response1-2" style="display:none"> {{ q[1] }}</p>
-                <button onclick="myFunction('response1-2')">Reveal Response 2</button> <br>
-                <p id="response1-3" style="display:none"> {{ q[2] }}</p>
-                <button onclick="myFunction('response1-3')">Reveal Response 3</button> <br>
-                <p id="response1-4" style="display:none"> {{ q[3] }}</p>
-                <button onclick="myFunction('response1-4')">Reveal Response 4</button> <br>
-                <p id="response1-5" style="display:none"> {{ q[4] }}</p>
-                <button onclick="myFunction('response1-5')">Reveal Response 5</button> <br>
-                <p id="response1-6" style="display:none"> {{ q[5] }}</p>
-                <button onclick="myFunction('response1-6')">Reveal Response 6</button> <br>
-              {% endif %}
+              {% for q in q1 %}
+                {% if q != 'empty: blank' %}
+                  <p id="response1-1" style="display:none"> {{ q1[0] }}</p>
+                  <button onclick="myFunction('response1-1')">Reveal Response 1</button> <br>
+                  <p id="response1-2" style="display:none"> {{ q1[1] }}</p>
+                  <button onclick="myFunction('response1-2')">Reveal Response 2</button> <br>
+                  <p id="response1-3" style="display:none"> {{ q1[2] }}</p>
+                  <button onclick="myFunction('response1-3')">Reveal Response 3</button> <br>
+                  <p id="response1-4" style="display:none"> {{ q1[3] }}</p>
+                  <button onclick="myFunction('response1-4')">Reveal Response 4</button> <br>
+                  <p id="response1-5" style="display:none"> {{ q1[4] }}</p>
+                  <button onclick="myFunction('response1-5')">Reveal Response 5</button> <br>
+                  <p id="response1-6" style="display:none"> {{ q1[5] }}</p>
+                  <button onclick="myFunction('response1-6')">Reveal Response 6</button> <br>
+                {% endif %}
+              {% endfor %}
             </div>
 
           <div>
