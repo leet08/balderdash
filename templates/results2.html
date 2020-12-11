@@ -71,7 +71,8 @@
               {% endif %}
             </div>
 
-          <div>
+          <button onclick="myFunction('final1')">Reveal Votes</button> 
+          <div id="final1" style="display:none">
             <br>
             {% for p in players %}
                 {% if p.username != 'empty' %}
@@ -92,15 +93,35 @@
       <h1> 2: {{question2.question}}... </h1>
       <button onclick="myFunction('results2')">Reveal Answers</button>        
           <div id="results2" style="display:none">
-      <div id="results">
-          {% for q in q2 %}
-            {% if q != 'empty: blank' %}
-              <p> {{ q }}</p>
-            {% endif %}
-          {% endfor %}
-      </div>
+          <div>
+              {% if q2[0] != 'empty: blank' %}
+                <button onclick="myFunction('response2-1')">Reveal Response</button> 
+                <p id="response2-1" style="display:none"> {{ q2[0] }}</p><br>
+              {% endif %}
+              {% if q2[1] != 'empty: blank' %}
+                <button onclick="myFunction('response2-2')">Reveal Response</button> 
+                <p id="response2-2" style="display:none"> {{ q2[1] }}</p><br>
+              {% endif %}
+              {% if q2[2] != 'empty: blank' %}
+                <button onclick="myFunction('response2-3')">Reveal Response</button>  
+                <p id="response2-3" style="display:none"> {{ q2[2] }}</p><br>
+              {% endif %}
+              {% if q2[3] != 'empty: blank' %}
+                <button onclick="myFunction('response2-4')">Reveal Response</button> 
+                <p id="response2-4" style="display:none"> {{ q2[3] }}</p><br>
+              {% endif %}
+              {% if q2[4] != 'empty: blank' %}
+                <button onclick="myFunction('response2-5')">Reveal Response</button> 
+                <p id="response2-5" style="display:none"> {{ q2[4] }}</p><br>
+              {% endif %}
+              {% if q2[5] != 'empty: blank' %}
+                <button onclick="myFunction('response2-6')">Reveal Response</button> 
+                <p id="response2-6" style="display:none"> {{ q2[5] }}</p>
+              {% endif %}
+            </div>
 
-      <div>
+      <button onclick="myFunction('final2')">Reveal Votes</button> 
+      <div id="final2" style="display:none">
         <br>
        {% for p in players %}
             {% if p.username != 'empty' %}
