@@ -12,54 +12,16 @@
 {% block content %}
 
     <script>
-    function myFunction1() {
-            var x = document.getElementById("results1");
+    function myFunction(divid) {
+            var x = document.getElementById(divid);
             if (x.style.display == "none") {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
             }
         }
-    function myFunction2() {
-            var x = document.getElementById("results2");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    function myFunction3() {
-            var x = document.getElementById("results3");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    function myFunction4() {
-            var x = document.getElementById("results4");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    function myFunction5() {
-            var x = document.getElementById("results5");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    function myFunction6() {
-            var x = document.getElementById("results6");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }   
+    
+         
     </script>
 
     {% if session_username is defined %}
@@ -80,7 +42,7 @@
     {% if game.admin == 1 %}
 
         <h1> 1: {{question1.question}}... </h1>
-        <button onclick="myFunction1()">Reveal Answers</button>        
+        <button onclick="myFunction('results1')">Reveal Answers</button>        
           <div id="results1" style="display:none">
             <div>
               {% for q in q1 %}
@@ -109,7 +71,7 @@
 
       {% if question2.question != 'blank' %}
       <h1> 2: {{question2.question}}... </h1>
-      <button onclick="myFunction2()">Reveal Answers</button>        
+      <button onclick="myFunction('results2')">Reveal Answers</button>        
           <div id="results2" style="display:none">
       <div id="results">
           {% for q in q2 %}
@@ -140,7 +102,7 @@
 
       {% if question3.question != 'blank' %}
       <h1> 3: {{question3.question}}... </h1>
-      <button onclick="myFunction3()">Reveal Answers</button>        
+      <button onclick="myFunction('results3')">Reveal Answers</button>        
           <div id="results3" style="display:none">
       <div id="results">
           {% for q in q3 %}
@@ -173,7 +135,7 @@
 
       {% if question4.question != 'blank' %}
       <h1> 4: {{question4.question}}... </h1>
-      <button onclick="myFunction4()">Reveal Answers</button>        
+      <button onclick="myFunction('results4')">Reveal Answers</button>        
           <div id="results4" style="display:none">
       <div id="results">
           {% for q in q4 %}
@@ -206,7 +168,7 @@
 
       {% if question5.question != 'blank' %}
       <h1> 5: {{question5.question}}... </h1>
-      <button onclick="myFunction5()">Reveal Answers</button>        
+      <button onclick="myFunction('results5')">Reveal Answers</button>        
           <div id="results5" style="display:none">
       <div id="results">
           {% for q in q5 %}
@@ -235,7 +197,7 @@
       {% endif %}
       <br>
 
-    <h1> Total scores:</h1> <button onclick="myFunction6()">Reveal Final Scores</button>        
+    <h1> Total scores:</h1> <button onclick="myFunction('results6')">Reveal Final Scores</button>        
           <div id="results6" style="display:none">
             <div>
                 {% for p in players %}
