@@ -46,7 +46,7 @@
           <div id="results1" style="display:none">
             <div>
               {% if q1[0] != 'empty: blank' %}
-                <button onclick="myFunction('response1-1')">Reveal Response</button> 
+                <button onclick="myFunction('response1-1'); this.style.display='none'">Reveal Response</button> 
                 <p id="response1-1" style="display:none"> {{ q1[0] }}</p>
               {% endif %}
               {% if q1[1] != 'empty: blank' %}
