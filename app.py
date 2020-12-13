@@ -79,7 +79,6 @@ def enter():
             Db.session.commit()
 
             # add to the game backwards from empties (user 46)
-
             currentPlayers = [currentGame.player1, currentGame.player2, currentGame.player3, currentGame.player4, currentGame.player5]
             for p in currentPlayers:
                 if p == emptyProfile or p == testProfile:
@@ -96,11 +95,13 @@ def enter():
                         user.playernumber = 5
                     Db.session.add(user)
                     Db.session.add(currentGame)
+                    Db.session.commit()
                     break
                 else:
                     user.playernumber = 5
                     Db.session.add(user)
                     Db.session.add(currentGame)
+                    Db.session.commit()
                     break
 
 	    	# 	Db.session.add(user)
