@@ -31,57 +31,55 @@ randomSeed = 0
 @app.route('/')
 @app.route('/enter', methods=['GET', 'POST'])
 def enter():
-	
-	
 
-	form = EnterGame()
+    form = EnterGame()
 
-	if request.method == 'POST':
-	    # Init credentials from form request
-	    gameID = request.form['gameID']
-	    username = request.form['username']
-	    session['username'] = username	    
-	    session['gameID'] = gameID
+    if request.method == 'POST':
+        # Init credentials from form request
+        gameID = request.form['gameID']
+        username = request.form['username']
+        session['username'] = username	    
+        session['gameID'] = gameID
 
-	    # show players to player1 waiting room?
-	    currentGame = Game.query.filter_by(gid=gameID).first()
+        # show players to player1 waiting room?
+        currentGame = Game.query.filter_by(gid=gameID).first()
 
-	    # user = User(username = username, response1 = 'blank', response2 = 'blank', response3 = 'blank', voting1 = 0, voting2 = 0, voting3 = 0) # create new user with blanks
-	    # Db.session.add(user)
-	    # Db.session.commit()
+        # user = User(username = username, response1 = 'blank', response2 = 'blank', response3 = 'blank', voting1 = 0, voting2 = 0, voting3 = 0) # create new user with blanks
+        # Db.session.add(user)
+        # Db.session.commit()
 
-		# check if they are already in the game and can reenter. current player list
-	    player1 = User.query.filter_by(uid=currentGame.player1).first()
-	    player2 = User.query.filter_by(uid=currentGame.player2).first()
-	    player3 = User.query.filter_by(uid=currentGame.player3).first()
-	    player4 = User.query.filter_by(uid=currentGame.player4).first()
-	    player5 = User.query.filter_by(uid=currentGame.player5).first()
-	    players = [player1, player2, player3, player4, player5] 
+        # check if they are already in the game and can reenter. current player list
+        player1 = User.query.filter_by(uid=currentGame.player1).first()
+        player2 = User.query.filter_by(uid=currentGame.player2).first()
+        player3 = User.query.filter_by(uid=currentGame.player3).first()
+        player4 = User.query.filter_by(uid=currentGame.player4).first()
+        player5 = User.query.filter_by(uid=currentGame.player5).first()
+        players = [player1, player2, player3, player4, player5] 
 
-	    userFlag = False
-	    for p in players: 
+        userFlag = False
+        for p in players: 
 
-	    	if p.username == username:
-	    		userFlag = True
-	    		if p == player1:
-	    			session['uid'] = player1.uid
-	    		if p == player2:
-	    			session['uid'] = player2.uid
-	    		if p == player3:
-	    			session['uid'] = player3.uid
-	    		if p == player4:
-	    			session['uid'] = player4.uid
-	    		if p == player5:
-	    			session['uid'] = player5.uid
-	    	
+            if p.username == username:
+                userFlag = True
+                if p == player1:
+                    session['uid'] = player1.uid
+                if p == player2:
+                    session['uid'] = player2.uid
+                if p == player3:
+                    session['uid'] = player3.uid
+                if p == player4:
+                    session['uid'] = player4.uid
+                if p == player5:
+                    session['uid'] = player5.uid
 
-	    if userFlag == False and username != 'ADMIN':
-	    	# create a new user
-	    	user = User(username = username, response1 = 'blank', response2 = 'blank', response3 = 'blank', response4= 'blank',response5 = 'blank',voting1 = 0, voting2 = 0, voting3 = 0, voting4 = 0, voting5 = 0) # create new user with blanks
-	    	Db.session.add(user)
-	    	Db.session.commit()
+        if userFlag == False and username != 'ADMIN':
+            # create a new user
+            user = User(username = username, response1 = 'blank', response2 = 'blank', response3 = 'blank', response4= 'blank',response5 = 'blank',voting1 = 0, voting2 = 0, voting3 = 0, voting4 = 0, voting5 = 0) # create new user with blanks
+            Db.session.add(user)
+            Db.session.commit()
 
-	    	# add to the game backwards from empties (user 46)
+            # add to the game backwards from empties (user 46)
+
             currentPlayers = [currentGame.player1, currentGame.player2, currentGame.player3, currentGame.player4, currentGame.player5]
             for p in currentPlayers:
                 if p == emptyProfile or p == testProfile:
@@ -105,12 +103,6 @@ def enter():
                     Db.session.add(currentGame)
                     break
 
-
-
-
-	    	# if currentGame.player4 == emptyProfile and currentGame.player5 != emptyProfile:
-	    	# 	currentGame.player4 = user.uid
-	    	# 	user.playernumber = 4
 	    	# 	Db.session.add(user)
 	    	# 	Db.session.add(currentGame)
 	    	# elif currentGame.player3 == emptyProfile and currentGame.player4 != emptyProfile:
@@ -134,26 +126,26 @@ def enter():
 	    	# 	Db.session.add(user)
 	    	# 	Db.session.add(currentGame)
 
-	    		# assign to session uid
-	    	session['uid'] = user.uid
-	    	Db.session.commit()
+	    	# assign to session uid
+            session['uid'] = user.uid
+            Db.session.commit()
 
-	    if username == 'ADMIN':
-	    	session['uid'] = adminProfile
-	    	Db.session.commit()
+        if username == 'ADMIN':
+            session['uid'] = adminProfile
+            Db.session.commit()
 
-	    # list for waiting room
-	    player1 = User.query.filter_by(uid=currentGame.player1).first()
-	    player2 = User.query.filter_by(uid=currentGame.player2).first()
-	    player3 = User.query.filter_by(uid=currentGame.player3).first()
-	    player4 = User.query.filter_by(uid=currentGame.player4).first()
-	    player5 = User.query.filter_by(uid=currentGame.player5).first()
-	    players = [player1, player2, player3, player4, player5] 
+        # list for waiting room
+        player1 = User.query.filter_by(uid=currentGame.player1).first()
+        player2 = User.query.filter_by(uid=currentGame.player2).first()
+        player3 = User.query.filter_by(uid=currentGame.player3).first()
+        player4 = User.query.filter_by(uid=currentGame.player4).first()
+        player5 = User.query.filter_by(uid=currentGame.player5).first()
+        players = [player1, player2, player3, player4, player5] 
 
-	    #flash('Congratulations, you have entered a game')
-	    return render_template('waiting.html', title='Waiting', players = players, session_username=username, session_game =gameID, room = 1)
-	else:
-		return render_template('signup.html', form = form, title='Enter')  
+        #flash('Congratulations, you have entered a game')
+        return render_template('waiting.html', title='Waiting', players = players, session_username=username, session_game =gameID, room = 1)
+    else:
+        return render_template('signup.html', form = form, title='Enter')  
 
 # GET & POST /removeuser
 @app.route('/removeuser', methods=['GET', 'POST'])
