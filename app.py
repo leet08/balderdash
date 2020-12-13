@@ -82,31 +82,57 @@ def enter():
 	    	Db.session.commit()
 
 	    	# add to the game backwards from empties (user 46)
-	    	if currentGame.player4 == emptyProfile and currentGame.player5 != emptyProfile:
-	    		currentGame.player4 = user.uid
-	    		user.playernumber = 4
-	    		Db.session.add(user)
-	    		Db.session.add(currentGame)
-	    	elif currentGame.player3 == emptyProfile and currentGame.player4 != emptyProfile:
-	    		currentGame.player3 = user.uid
-	    		user.playernumber = 3
-	    		Db.session.add(user)
-	    		Db.session.add(currentGame)
-	    	elif currentGame.player2 ==emptyProfile and currentGame.player3 != emptyProfile:
-	    		currentGame.player2 = user.uid
-	    		user.playernumber = 2
-	    		Db.session.add(user)
-	    		Db.session.add(currentGame)
-	    	elif currentGame.player1 == testProfile: 
-	    		currentGame.player1 = user.uid
-	    		user.playernumber = 1
-	    		Db.session.add(user)
-	    		Db.session.add(currentGame)
-	    	else:
-	    		currentGame.player5 = user.uid
-	    		user.playernumber = 5
-	    		Db.session.add(user)
-	    		Db.session.add(currentGame)
+            currentPlayers = [currentGame.player1, currentGame.player2, currentGame.player3, currentGame.player4, currentGame.player5]
+            for p in currentPlayers:
+                if p == emptyProfile or p == testProfile:
+                    p = user.uid
+                    if p == currentGame.player1: 
+                        user.playernumber = 1
+                    if p == currentGame.player2: 
+                        user.playernumber = 2
+                    if p == currentGame.player3: 
+                        user.playernumber = 3
+                    if p == currentGame.player4: 
+                        user.playernumber = 4
+                    if p == currentGame.player5: 
+                        user.playernumber = 5
+                    Db.session.add(user)
+                    Db.session.add(currentGame)
+                    break
+                else:
+                    user.playernumber = 5
+                    Db.session.add(user)
+                    Db.session.add(currentGame)
+                    break
+
+
+
+
+	    	# if currentGame.player4 == emptyProfile and currentGame.player5 != emptyProfile:
+	    	# 	currentGame.player4 = user.uid
+	    	# 	user.playernumber = 4
+	    	# 	Db.session.add(user)
+	    	# 	Db.session.add(currentGame)
+	    	# elif currentGame.player3 == emptyProfile and currentGame.player4 != emptyProfile:
+	    	# 	currentGame.player3 = user.uid
+	    	# 	user.playernumber = 3
+	    	# 	Db.session.add(user)
+	    	# 	Db.session.add(currentGame)
+	    	# elif currentGame.player2 ==emptyProfile and currentGame.player3 != emptyProfile:
+	    	# 	currentGame.player2 = user.uid
+	    	# 	user.playernumber = 2
+	    	# 	Db.session.add(user)
+	    	# 	Db.session.add(currentGame)
+	    	# elif currentGame.player1 == testProfile: 
+	    	# 	currentGame.player1 = user.uid
+	    	# 	user.playernumber = 1
+	    	# 	Db.session.add(user)
+	    	# 	Db.session.add(currentGame)
+	    	# else:
+	    	# 	currentGame.player5 = user.uid
+	    	# 	user.playernumber = 5
+	    	# 	Db.session.add(user)
+	    	# 	Db.session.add(currentGame)
 
 	    		# assign to session uid
 	    	session['uid'] = user.uid
