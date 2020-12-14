@@ -201,10 +201,17 @@ def removeuser():
         Db.session.add(session_game)
         Db.session.commit()
 
-        return render_template('waiting.html', title='Waiting', room = 1, players = [" "], session_username=session_uid.username, session_game=session_game)
+        player1 = User.query.filter_by(uid=currentGame.player1).first()
+        player2 = User.query.filter_by(uid=currentGame.player2).first()
+        player3 = User.query.filter_by(uid=currentGame.player3).first()
+        player4 = User.query.filter_by(uid=currentGame.player4).first()
+        player5 = User.query.filter_by(uid=currentGame.player5).first()
+        players = [player1, player2, player3, player4, player5] 
+
+        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game)
     else:
         #all_posts = Post.query.all()
-        return render_template('waiting.html', title='Waiting', room = room, players = [" "], session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game)
    
 @app.route('/waiting')
 def waiting():
