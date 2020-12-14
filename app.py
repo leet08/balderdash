@@ -113,11 +113,11 @@ def enter():
                         Db.session.add(currentGame)
                         break
                     
-                # else:
-                #     user.playernumber = 5
-                #     currentGame.player5 = user.uid
-                #     Db.session.add(user)
-                #     Db.session.add(currentGame)
+                else:
+                    user.playernumber = 5
+                    currentGame.player5 = user.uid
+                    Db.session.add(user)
+                    Db.session.add(currentGame)
 
 	    	# 	Db.session.add(user)
 	    	# 	Db.session.add(currentGame)
