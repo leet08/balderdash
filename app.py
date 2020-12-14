@@ -82,7 +82,6 @@ def enter():
             currentPlayers = [currentGame.player1, currentGame.player2, currentGame.player3, currentGame.player4, currentGame.player5]
             for p in currentPlayers:
                 if p == emptyProfile or p == testProfile:
-                    p = user.uid
                     if p == currentGame.player1: 
                         user.playernumber = 1
                     if p == currentGame.player2: 
@@ -93,15 +92,14 @@ def enter():
                         user.playernumber = 4
                     if p == currentGame.player5: 
                         user.playernumber = 5
+                    p = user.uid
                     Db.session.add(user)
                     Db.session.add(currentGame)
-                    Db.session.commit()
                     break
                 else:
                     user.playernumber = 5
                     Db.session.add(user)
                     Db.session.add(currentGame)
-                    Db.session.commit()
                     break
 
 	    	# 	Db.session.add(user)
