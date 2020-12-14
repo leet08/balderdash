@@ -66,7 +66,7 @@
         
     </div>
 
-    {% if session_username is ADMIN %}
+    {% if session_username == 'ADMIN' %}
         <label style="padding: 10px"  for="voting1">Remove user?</label>
         <select id="remove" name = "remove">
           <option value=1>1</option>
