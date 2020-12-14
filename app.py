@@ -184,7 +184,7 @@ def removeuser():
 
     if request.method == 'POST':
         # Get field button values and query vote was for which player's response
-        removeuser_entry = int(request.form.get("remove", None))
+        removeuser_entry = request.form.get("remove", None)
         if removeuser_entry == 1:
             session_game.player1 = emptyProfile
         if removeuser_entry == 2:
