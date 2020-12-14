@@ -197,6 +197,8 @@ def removeuser():
             session_game.player5 = emptyProfile
         if removeuser_entry == 6:
             session_game.player6 = emptyProfile
+        else:
+            session_game.player1 = emptyProfile
 
         Db.session.add(session_game)
         Db.session.commit()
@@ -208,7 +210,7 @@ def removeuser():
         player5 = User.query.filter_by(uid=session_game.player5).first()
         players = [player1, player2, player3, player4, player5] 
 
-        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game.gid)
+        return render_template('waiting.html', title='Waiting', room = 1, players = players, session_username=session_uid.username, session_game=session_game.gid)
     else:
         #all_posts = Post.query.all()
         return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game.gid)

@@ -67,7 +67,7 @@
     </div>
 
     {% if session_username == 'ADMIN' %}
-    <form action="/removeuser" method="POST">
+    <form id="remove" action="/removeuser" method="POST" enctype="multipart/form-data">
         <label style="padding: 10px" for = "remove">Remove user?</label>
         <select id="remove" name = "remove">
           <option value=1>1</option>
@@ -79,6 +79,7 @@
           <br>
         </select>
         <button type="submit">Remove</button>
+
         </form>
     {% endif %}
 
