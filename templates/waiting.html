@@ -68,8 +68,8 @@
 
     {% if session_username == 'ADMIN' %}
     <form action="/removeuser" method="POST">
-        <label style="padding: 10px" >Remove user?</label>
-        <select id="remove" name = "Remove">
+        <label style="padding: 10px" for = "remove">Remove user?</label>
+        <select id="remove" name = "remove">
           <option value=1>1</option>
           <option value=2>2</option>
           <option value=3>3</option>

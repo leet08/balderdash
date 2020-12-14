@@ -208,10 +208,10 @@ def removeuser():
         player5 = User.query.filter_by(uid=session_game.player5).first()
         players = [player1, player2, player3, player4, player5] 
 
-        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game.gid)
     else:
         #all_posts = Post.query.all()
-        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game)
+        return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game.gid)
    
 @app.route('/waiting')
 def waiting():
