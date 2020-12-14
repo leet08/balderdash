@@ -184,7 +184,7 @@ def removeuser():
 
     if request.method == 'POST':
         # Get field button values and query vote was for which player's response
-        removeuser_entry = request.form.get("remove", None)
+        removeuser_entry = request.form.get("remove")
         if removeuser_entry == 1:
             session_game.player1 = emptyProfile
         if removeuser_entry == 2:
@@ -201,11 +201,11 @@ def removeuser():
         Db.session.add(session_game)
         Db.session.commit()
 
-        player1 = User.query.filter_by(uid=currentGame.player1).first()
-        player2 = User.query.filter_by(uid=currentGame.player2).first()
-        player3 = User.query.filter_by(uid=currentGame.player3).first()
-        player4 = User.query.filter_by(uid=currentGame.player4).first()
-        player5 = User.query.filter_by(uid=currentGame.player5).first()
+        player1 = User.query.filter_by(uid=session_game.player1).first()
+        player2 = User.query.filter_by(uid=session_game.player2).first()
+        player3 = User.query.filter_by(uid=session_game.player3).first()
+        player4 = User.query.filter_by(uid=session_game.player4).first()
+        player5 = User.query.filter_by(uid=session_game.player5).first()
         players = [player1, player2, player3, player4, player5] 
 
         return render_template('waiting.html', title='Waiting', room = room, players = players, session_username=session_uid.username, session_game=session_game)
