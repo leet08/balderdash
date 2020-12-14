@@ -84,20 +84,25 @@ def enter():
                 if p == emptyProfile or p == testProfile:
                     if p == currentGame.player1: 
                         user.playernumber = 1
+                        currentGame.player1 = user.uid
                     if p == currentGame.player2: 
                         user.playernumber = 2
+                        currentGame.player2 = user.uid
                     if p == currentGame.player3: 
                         user.playernumber = 3
+                        currentGame.player3 = user.uid
                     if p == currentGame.player4: 
                         user.playernumber = 4
+                        currentGame.player4 = user.uid
                     if p == currentGame.player5: 
                         user.playernumber = 5
-                    p = user.uid
+                        currentGame.player5 = user.uid
                     Db.session.add(user)
                     Db.session.add(currentGame)
                     break
                 else:
                     user.playernumber = 5
+                    currentGame.player5 = user.uid
                     Db.session.add(user)
                     Db.session.add(currentGame)
                     break
