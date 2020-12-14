@@ -113,7 +113,7 @@ def enter():
                         Db.session.add(currentGame)
                         break
                     
-                else:
+                elif p!=emptyProfile and p != testProfile:
                     user.playernumber = 5
                     currentGame.player5 = user.uid
                     Db.session.add(user)
