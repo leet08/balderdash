@@ -197,8 +197,6 @@ def removeuser():
             session_game.player5 = emptyProfile
         if removeuser_entry == 6:
             session_game.player6 = emptyProfile
-        else:
-            session_game.player1 = emptyProfile
 
         Db.session.add(session_game)
         Db.session.commit()
