@@ -119,7 +119,7 @@ def enter():
                         createPlayerFlag = 1
                         break
                     
-            if createPlayerFlag = 0:
+            if createPlayerFlag == 0:
                 user.playernumber = 5
                 currentGame.player5 = user.uid
                 Db.session.add(user)
