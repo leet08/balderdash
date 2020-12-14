@@ -79,6 +79,7 @@ def enter():
             Db.session.commit()
 
             # add to the game backwards from empties (user 46)
+            createPlayerFlag = 0
             currentPlayers = [currentGame.player1, currentGame.player2, currentGame.player3, currentGame.player4, currentGame.player5]
             for p in currentPlayers:
                 if p == emptyProfile or p == testProfile:
@@ -87,37 +88,42 @@ def enter():
                         currentGame.player1 = user.uid
                         Db.session.add(user)
                         Db.session.add(currentGame)
+                        createPlayerFlag = 1
                         break
                     if p == currentGame.player2: 
                         user.playernumber = 2
                         currentGame.player2 = user.uid
                         Db.session.add(user)
                         Db.session.add(currentGame)
+                        createPlayerFlag = 1
                         break
                     if p == currentGame.player3: 
                         user.playernumber = 3
                         currentGame.player3 = user.uid
                         Db.session.add(user)
                         Db.session.add(currentGame)
+                        createPlayerFlag = 1
                         break
                     if p == currentGame.player4: 
                         user.playernumber = 4
                         currentGame.player4 = user.uid
                         Db.session.add(user)
                         Db.session.add(currentGame)
+                        createPlayerFlag = 1
                         break
                     if p == currentGame.player5: 
                         user.playernumber = 5
                         currentGame.player5 = user.uid
                         Db.session.add(user)
                         Db.session.add(currentGame)
+                        createPlayerFlag = 1
                         break
                     
-                elif p!=emptyProfile and p != testProfile:
-                    user.playernumber = 5
-                    currentGame.player5 = user.uid
-                    Db.session.add(user)
-                    Db.session.add(currentGame)
+            if createPlayerFlag = 0:
+                user.playernumber = 5
+                currentGame.player5 = user.uid
+                Db.session.add(user)
+                Db.session.add(currentGame)
 
 	    	# 	Db.session.add(user)
 	    	# 	Db.session.add(currentGame)
