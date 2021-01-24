@@ -10,13 +10,9 @@
 {% block content %}
 
     {% if session_username is defined %}
-
         <h1>Hi {{ session_username }}!</h1>
-
     {% else %}
-
         <h1>Hi guest!</h1>
-
     {% endif %}
 
     <div>
@@ -27,9 +23,7 @@
             <div>
                 Players present (refresh page to update): 
                 {% for p in players %}
-                    {% if p.username != 'empty' %}
                     <p> {{ p.username }}</p>
-                    {% endif %}
                 {% endfor %}
             </div>
         {% endif %}
@@ -38,13 +32,11 @@
             <div>
                 Players present (refresh page to update): 
                 {% for p in players %}
-                    {% if p.username != 'empty' %}
                     <p> {{ p.username }}
-                        {% if p.response1 != 'blank' %}
+                        {% if p.roundnumber == 2 %}
                             finished writing
                         {% endif %}
                     </p>
-                    {% endif %}
                 {% endfor %}
             </div>
         {% endif %}
@@ -53,13 +45,14 @@
             <div>
                 Players present (refresh page to update): 
                 {% for p in players %}
-                {% if p.username != 'empty' %}
                     <p> {{ p.username }}
-                        {% if p.voting1 != 0 %}
+                        {% if p.roundnumber == 3 %}
                             finished voting
                         {% endif %}
+                        {% if p.roundnumber == 4 %}
+                            finished voting and submitted results
+                        {% endif %}
                     </p>
-                {% endif %}
                 {% endfor %}
             </div>
         {% endif %}
@@ -68,18 +61,11 @@
 
     {% if session_username == 'ADMIN' %}
     <form id="remove" action="/removeuser" method="POST" enctype="multipart/form-data">
+        <div class="form-group" id="remove">
         <label style="padding: 10px" for = "remove">Remove user?</label>
-        <select id="remove" name = "remove">
-          <option value=1>1</option>
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
-          <option value=5>5</option>
-          <option value=6>6</option>
-          <br>
-        </select>
-        <button type="submit">Remove</button>
-
+            <input id="remove" name="remove" size="1" type="text" value=""><br>
+        <button type="submit">Remove</button><br><br>
+        </div>
         </form>
     {% endif %}
 
